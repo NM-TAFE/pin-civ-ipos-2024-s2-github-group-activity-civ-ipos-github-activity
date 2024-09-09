@@ -10,7 +10,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'tic-tac-toe=app:app.run',
+            'tic-tac-toe=src.src:src.run',
         ],
     },
 )
