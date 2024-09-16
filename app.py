@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
+from player import Player
 
 app = Flask(__name__)
 
