@@ -20,7 +20,7 @@ class Board:
         for i in range(self.Rows):
             for j in range(self.Columns):
                 grid_position += 1
-                if grid_position == move and self.Grid[i][j] != ' ':
+                if grid_position == move and self.Grid[i][j] == ' ':
                     self.Grid[i][j] = player
 
     def check_winner(self):
