@@ -1,44 +1,39 @@
 from flask import Flask, render_template, request, redirect, url_for
+from src.game import Game
+from src.board import Board
+
 
 app = Flask(__name__)
 
 # Initialise game board and current player
-board = [' '] * 9
-current_player = 'X'
+game = Game()
+board = Board(3, 3)
 
 # NOTE: you cannot use this answer in Portfolio Part 2
-def check_winner():
-    # Winning combinations
-    return None
-
-
-def check_draw():
-    return ' ' not in board
-
 
 @app.route('/')
 def index():
-    winner = check_winner()
-    draw = check_draw()
+    winner = board.check_winner(game.CurrentPlayer, None)
+    draw = board.check_draw()
+    current_player = game.CurrentPlayer
     return render_template('index.html', board=board, current_player=current_player, winner=winner, draw=draw)
 
 
 @app.route('/play/<int:cell>')
 def play(cell):
     # breakpoint()
-    global current_player
-    if board[cell] == ' ':
-        board[cell] = current_player
-        if not check_winner():
-            current_player = 'O' if current_player == 'X' else 'X'
+
+    board.get_move(game.CurrentPlayer, cell)
+    if not board.check_winner(game.CurrentPlayer, cell):
+        game.CurrentPlayer = 'O' if game.CurrentPlayer == 'X' else 'X'
     return redirect(url_for('index'))
 
 
 @app.route('/reset')
 def reset():
-    global board, current_player
-    board = [' '] * 9
-    current_player = 'X'
+
+    # board = Board(3, 3)
+    # current_player = 'X'
     return redirect(url_for('index'))
 
 
