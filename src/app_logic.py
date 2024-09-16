@@ -22,6 +22,8 @@ class AppLogic:
         def play(cell):
             if self.board[cell] == ' ':
                 self.board[cell] = self.current_player
+                if not self.result_handler.check_draw():
+                    self.current_player = 'O' if self.current_player == 'X' else 'X'
                 if not self.result_handler.check_winner():
                     self.current_player = 'O' if self.current_player == 'X' else 'X'
             return redirect(url_for('index'))
