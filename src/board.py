@@ -13,11 +13,10 @@ class Board:
             grid.append(row)
         return grid
 
-    def get_move(self, player):
+    def get_move(self, player, move):
 
         spaces = self.Rows * self.Columns
-        move = int(input(f"player {player} choose next move(1-{spaces}) "))
-        grid_position = 0
+        grid_position = -1
         for i in range(self.Rows):
             for j in range(self.Columns):
                 grid_position += 1
