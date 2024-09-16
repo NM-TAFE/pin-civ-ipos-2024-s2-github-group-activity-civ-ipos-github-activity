@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
-from game import Game
-from board import Board
+from src.game import Game
+from src.board import Board
 
 
 app = Flask(__name__)
