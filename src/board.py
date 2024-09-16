@@ -14,8 +14,6 @@ class Board:
         return grid
 
     def get_move(self, player, move):
-
-        spaces = self.Rows * self.Columns
         grid_position = -1
         for i in range(self.Rows):
             for j in range(self.Columns):
@@ -67,7 +65,6 @@ class Board:
                 return winner
 
         # check diagonal
-
         if latest_move_y == latest_move_y:  # checks whether we're on the first diagonal
             for i in range(self.Rows):
                 if self.Grid[i][i] != current_player:
@@ -100,4 +97,5 @@ if __name__ == '__main__':
 
     for row in board.Grid:
         print(row)
+
     print(board.check_winner('x', 2))
