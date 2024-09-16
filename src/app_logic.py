@@ -5,7 +5,7 @@ from results_handler import ResultsHandler
 class AppLogic:
     def __init__(self, app):
         self.app = app
-        self.board = [' '] * 9
+        self.board = [' ' for _ in range(9)]
         self.current_player = 'X'
         self.result_handler = ResultsHandler(self.board)
         self.setup_routes()
@@ -15,6 +15,8 @@ class AppLogic:
         def index():
             winner = self.result_handler.check_winner()
             draw = self.result_handler.check_draw()
+            return render_template('index.html', board=self.board,
+                                   current_player=self.current_player, winner=winner, draw=draw)
 
         @self.app.route('/play/<int:cell>')
         def play(cell):
@@ -26,7 +28,8 @@ class AppLogic:
 
         @self.app.route('/reset')
         def reset():
-            self.board = [' '] * 9
+            # self.board = [' '] * 9
+            self.board = self.result_handler.reset()
             self.current_player = 'X'
             return redirect(url_for('index'))
 
