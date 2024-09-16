@@ -13,6 +13,17 @@ class Board:
             grid.append(row)
         return grid
 
+    def get_move(self, player):
+
+        spaces = self.Rows * self.Columns
+        move = int(input(f"player {player} choose next move(1-{spaces}) "))
+        grid_position = 0
+        for i in range(self.Rows):
+            for j in range(self.Columns):
+                grid_position += 1
+                if grid_position == move:
+                    self.Grid[i][j] = player
+
     def check_winner(self):
         # Winning combinations
         return None
