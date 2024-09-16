@@ -44,7 +44,9 @@ class Board:
             return None
 
         winner = None
+
         latest_move_y, latest_move_x = self.get_x_and_y(move)
+
 
         # check horizontal
         for column in range(self.Rows): # cycle through each column in the row
@@ -65,6 +67,7 @@ class Board:
                 return winner
 
         # check diagonal
+
         if latest_move_y == latest_move_y:  # checks whether we're on the first diagonal
             for i in range(self.Rows):
                 if self.Grid[i][i] != current_player:
