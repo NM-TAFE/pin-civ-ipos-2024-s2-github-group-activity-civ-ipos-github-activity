@@ -21,7 +21,7 @@ def check_draw():
 def index():
     winner = check_winner()
     draw = check_draw()
-    return render_template('index.html', board=board, current_player=current_player, winner=winner, draw=draw)
+    return render_template('index.html', board=board, current_player=current_player, winner=winner, draw=draw, results=results)
 
 
 @app.route('/play/<int:cell>')
