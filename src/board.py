@@ -23,6 +23,13 @@ class Board:
                 if grid_position == move and self.Grid[i][j] == ' ':
                     self.Grid[i][j] = player
 
+    def convert_list(self):
+        one_d_list = []
+        for i in range(self.Rows):
+            for j in range(self.Columns):
+                one_d_list.append(self.Grid[i][j])
+        return one_d_list
+
     def check_winner(self):
         # Winning combinations
         return None
