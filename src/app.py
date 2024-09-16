@@ -5,6 +5,7 @@ app = Flask(__name__)
 # Initialise game board and current player
 board = [' '] * 9
 current_player = 'X'
+results = {'X': 0, 'O': 0}
 
 # NOTE: you cannot use this answer in Portfolio Part 2
 def check_winner():
@@ -42,4 +43,9 @@ def reset():
     return redirect(url_for('index'))
 
 
+def taly_counter():
+    global results
+    winner = check_winner()
+    if winner:
+        results[winner] += 1
 app.run(debug=True)
