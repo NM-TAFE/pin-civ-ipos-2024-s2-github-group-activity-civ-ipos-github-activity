@@ -84,7 +84,12 @@ class Board:
         return winner
 
     def check_draw(self):
-        return ' ' not in self.Grid
+        for row in self.Grid:
+            for column in row:
+                if column == ' ':
+                    return False
+
+        return True
 
 
 if __name__ == '__main__':
