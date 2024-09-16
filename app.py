@@ -13,7 +13,7 @@ board = Board(3, 3)
 
 @app.route('/')
 def index():
-    winner = board.check_winner()
+    winner = board.check_winner(game.CurrentPlayer, None)
     draw = board.check_draw()
     current_player = game.CurrentPlayer
     return render_template('index.html', board=board, current_player=current_player, winner=winner, draw=draw)
@@ -24,7 +24,7 @@ def play(cell):
     # breakpoint()
 
     board.get_move(game.CurrentPlayer, cell)
-    if not board.check_winner():
+    if not board.check_winner(game.CurrentPlayer, cell):
         game.CurrentPlayer = 'O' if game.CurrentPlayer == 'X' else 'X'
     return redirect(url_for('index'))
 

@@ -45,7 +45,6 @@ class Board:
 
         latest_move_y, latest_move_x = self.get_x_and_y(move)
 
-
         # check horizontal
         for column in range(self.Rows): # cycle through each column in the row
             if self.Grid[latest_move_y][column] != current_player:
