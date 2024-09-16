@@ -15,15 +15,11 @@ class AppLogic:
         def index():
             winner = self.result_handler.check_winner()
             draw = self.result_handler.check_draw()
-            return render_template('index.html', board=self.board,
-                                   current_player=self.current_player, winner=winner, draw=draw)
 
         @self.app.route('/play/<int:cell>')
         def play(cell):
             if self.board[cell] == ' ':
                 self.board[cell] = self.current_player
-                if not self.result_handler.check_draw():
-                    self.current_player = 'O' if self.current_player == 'X' else 'X'
                 if not self.result_handler.check_winner():
                     self.current_player = 'O' if self.current_player == 'X' else 'X'
             return redirect(url_for('index'))
