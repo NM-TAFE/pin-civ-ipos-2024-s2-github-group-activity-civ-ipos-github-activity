@@ -23,10 +23,9 @@ def index():
 def play(cell):
     # breakpoint()
 
-    if board[cell] == ' ':
-        board[cell] = game.CurrentPlayer
-        if not board.check_winner():
-            game.CurrentPlayer = 'O' if game.CurrentPlayer == 'X' else 'X'
+    board.get_move(game.CurrentPlayer)
+    if not board.check_winner():
+        game.CurrentPlayer = 'O' if game.CurrentPlayer == 'X' else 'X'
     return redirect(url_for('index'))
 
 
